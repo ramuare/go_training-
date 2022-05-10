@@ -2,24 +2,18 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
 )
 
-var name,emailid string
-var DOB,i int
+var name, emailid string
+var DOB, i int
 var passpowrd int
 var phonenumber int
 var cash, balance, NewAmount, witcash uint
 var bal int
+var x int
 
-func welcomeoptions(){
-
-	
-
-}
-
-
-
-func Accountcreation(name string, emailid string ,DOB int,password int,phonenumber int){
+func Accountcreation(name string, emailid string, DOB int, password int, phonenumber int) {
 
 	fmt.Println("enter name:")
 	fmt.Scan(&name)
@@ -36,17 +30,23 @@ func Accountcreation(name string, emailid string ,DOB int,password int,phonenumb
 	fmt.Println("phonenumber:")
 	fmt.Scan(&phonenumber)
 
+	x := func() {
+
+		RandomIntegerwithinRange := (rand.Intn(9999999-1000000) + 1000000)
+		fmt.Println(RandomIntegerwithinRange)
+	}
+	fmt.Println(x)
 
 }
 
-func DepositFun(cash uint, balance uint) {
+func Deposit(cash uint, balance uint) {
 	fmt.Println("your previouse balace is:", balance)
 
-		NewAmount = cash + balance
+	NewAmount = cash + balance
 	fmt.Println("and your current balance is:", NewAmount)
 }
 
-func Withdraw(witcash uint , bal int) {
+func Withdraw(witcash uint, bal int) {
 
 	fmt.Printf("your ammount is %v initially", bal)
 
@@ -63,8 +63,14 @@ func Withdraw(witcash uint , bal int) {
 	}
 }
 
-func Details(){
+func Details() {
 
+	fmt.Println("enter account numbe:" )
+
+
+}
+
+func logout() {
 
 }
 
@@ -76,31 +82,24 @@ func main() {
 	fmt.Println("4.Details")
 	fmt.Println("5.logout")
 
-		fmt.Println("enter your options:", i)
-		fmt.Scan(&i)
-		switch i{
-		case 1:
-			fmt.Println("")
-		case 2:
+	fmt.Println("enter your options:", i)
+	fmt.Scan(&i)
+	switch i {
+	case 1:
+		Accountcreation(name, emailid, DOB, passpowrd, phonenumber)
+		return
+	case 2:
+		Deposit(cash, balance)
+		return
+	case 3:
+		Withdraw(witcash, bal)
+		return
+	case 4:
+		Details()
+	case 5:
+		logout()
 
-		case 3:
-			
-		case 4:
-
-		case 5:	
-		
-		}
-
-		
-
-
-
-
-
-
-	
-
-	
+	}
 
 	var dw string
 	fmt.Scanln(&dw)
@@ -109,8 +108,8 @@ func main() {
 	fmt.Scanln(&amou)
 
 	if dw == "Deposit" || dw == "deposit" {
-		DepositFun(amou, 0)
-		
+		Deposit(amou, 0)
+
 	} else if dw == "Withdraw" || dw == "withdraw" {
 		Withdraw(amou, 0)
 	}
